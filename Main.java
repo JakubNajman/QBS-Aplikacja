@@ -2,11 +2,31 @@ import java.io.*;
 import java.util.*;
 import java.lang.Math;
 import javax.swing.JFrame;
+
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 
 public class Main {
 
+    
+
+    public static byte[] pathToByte(Path path){
+        try {
+            byte[] data = Files.readAllBytes(path);
+            return data;
+        } catch (Exception e){
+            return null;
+        }
+    }
+
+    public static byte[] stringToByte(String string){
+        try {
+            byte[] data = string.getBytes(StandardCharsets.UTF_8);
+            return data;
+        } catch (Exception e){
+            return null;
+        }
+    }
     public static List<Byte> byteReader(Path path) {
         try {
             byte[] data = Files.readAllBytes(path);
@@ -19,7 +39,7 @@ public class Main {
             return null;
         }
     }
-
+    
     public static Integer[] byteComparator(List<Byte> motherSequence, List<Byte> userInput) {
         try {
             int begin = Collections.indexOfSubList(motherSequence, userInput);
