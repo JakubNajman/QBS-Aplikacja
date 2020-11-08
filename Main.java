@@ -8,8 +8,6 @@ import java.nio.file.*;
 
 public class Main {
 
-    
-
     public static byte[] pathToByte(Path path){
         try {
             byte[] data = Files.readAllBytes(path);
@@ -27,9 +25,8 @@ public class Main {
             return null;
         }
     }
-    public static List<Byte> byteReader(Path path) {
+    public static List<Byte> byteReader(byte[] data) {
         try {
-            byte[] data = Files.readAllBytes(path);
             List<Byte> endData = new ArrayList<Byte>();
             for(int i = 0; i<data.length; i++){
                 endData.add(data[i]);
@@ -48,6 +45,30 @@ public class Main {
             return borders;
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public static List<Byte> sequenceSlicer(List<Byte> motherSequence, Integer[] borders, List<Byte> userInput){
+        try {
+            List<Byte> endSequence = new ArrayList<Byte>();
+            endSequence.addAll(motherSequence.subList(0, borders[0]));
+            endSequence.addAll(userInput);
+            endSequence.addAll(motherSequence.subList(borders[1], motherSequence.size()));
+            return endSequence;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static void byteChanger(Path path, String inputOne, String inputTwo){
+        try {
+            List<Byte> motherSequence = byteReader(pathToByte(path));
+
+            if(){
+                
+            }
+        } catch (Exception e) {
+            System.out.println("uhoooh stinky");
         }
     }
 
