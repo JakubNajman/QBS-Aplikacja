@@ -36,6 +36,18 @@ public class Main {
             return null;
         }
     }
+
+    public static byte[] listToArray(List<Byte> data){
+        try{
+            byte[] endData = new byte[data.size()];
+            for(int i = 0; i<endData.length; i++){
+                endData[i] = data.get(i);
+            }
+            return endData;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
     public static Integer[] byteComparator(List<Byte> motherSequence, List<Byte> userInput) {
         try {
@@ -60,12 +72,22 @@ public class Main {
         }
     }
 
-    public static void byteChanger(Path path, String inputOne, String inputTwo){
+    public static void byteChanger(Path path, String stringInputOne, String stringInputTwo){
         try {
             List<Byte> motherSequence = byteReader(pathToByte(path));
-
-            if(){
-                
+            List<Byte> userInputOne = byteReader(stringToByte(stringInputOne));
+            List<Byte> userInputTwo = byteReader(stringToByte(stringInputTwo));
+            Integer[] borders = byteComparator(motherSequence, userInputOne);
+            if(borders[0] != -1){
+                List<Byte> changedMother = sequenceSlicer(motherSequence, borders, userInputTwo);
+                System.out.println("WSZEDŁEM");
+                byte[] motherArray = listToArray(changedMother);
+                for (int i = 0; i < motherArray.length; i++) {
+                    System.out.println(motherArray[i]);
+                }
+                try (FileOutputStream fos = new FileOutputStream(path.toString())) {
+                    fos.write(motherArray);
+                }
             }
         } catch (Exception e) {
             System.out.println("uhoooh stinky");
@@ -75,10 +97,6 @@ public class Main {
     public static void main(String[] args) {
 
         Path path1 = Paths.get("C:/Users/najma/Desktop/test.txt");
-        Path path2 = Paths.get("C:/Users/najma/Desktop/test2.txt");
-        Integer[] ends = byteComparator(byteReader(path1), byteReader(path2));
-        for (int i = 0; i < ends.length; i++) {
-            System.out.println(ends[i]);
-        }
+        byteChanger(path1, "klok", "cock");
     }
 }
