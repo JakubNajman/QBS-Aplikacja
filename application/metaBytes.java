@@ -52,7 +52,6 @@ public class metaBytes {
     public static Integer[] byteComparator(List<Byte> motherSequence, List<Byte> userInput) {
         try {
             int begin = Collections.indexOfSubList(motherSequence, userInput);
-            System.out.println(begin);
             Integer[] borders = { begin, begin + userInput.size() };
             return borders;
         } catch (Exception e) {
@@ -80,11 +79,7 @@ public class metaBytes {
             Integer[] borders = byteComparator(motherSequence, userInputOne);
             if(borders[0] != -1){
                 List<Byte> changedMother = sequenceSlicer(motherSequence, borders, userInputTwo);
-                System.out.println("WSZEDŁEM");
                 byte[] motherArray = listToArray(changedMother);
-                for (int i = 0; i < motherArray.length; i++) {
-                    System.out.println(motherArray[i]);
-                }
                 try (FileOutputStream fos = new FileOutputStream(path.toString())) {
                     fos.write(motherArray);
                 }

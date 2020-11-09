@@ -23,17 +23,12 @@ public class metaFileReader {
 
                 if(listOfFiles.get(index).isFile()){
                     String tempString = getFileExtension(listOfFiles.get(index).toString());
-                    System.out.println(tempString);
-                    System.out.println(fileExtension);
-                    System.out.println("Next file");
                     if(tempString.equals(fileExtension)){
                         Path temp = Paths.get(listOfFiles.get(index).getCanonicalPath());
                         filePaths.add(temp);
-                        System.out.println("File: " + listOfFiles.get(index).getName());
                     }
                 } else
                 if(listOfFiles.get(index).isDirectory()){
-                    System.out.println("Dir:" + listOfFiles.get(index).getName());
                     Path temp = Paths.get(listOfFiles.get(index).getCanonicalPath());
                     recDirectoryReader(temp, fileExtension, 0, filePaths);
                 }
