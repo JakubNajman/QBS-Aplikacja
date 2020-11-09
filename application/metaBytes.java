@@ -1,12 +1,12 @@
+package application;
+
 import java.io.*;
 import java.util.*;
-import java.lang.Math;
-import javax.swing.JFrame;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 
-public class Main {
+public class metaBytes {
 
     public static byte[] pathToByte(Path path){
         try {
@@ -94,9 +94,21 @@ public class Main {
         }
     }
 
+    public static void listChanger(List<Path> paths, String stringInputOne, String stringInputTwo){
+        try{
+            if(paths.size() != 0){
+                for(int i = 0; i<paths.size(); i++){
+                    byteChanger(paths.get(i), stringInputOne, stringInputTwo);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("śmierdziuszek");
+        }
+    }
+
     public static void main(String[] args) {
 
         Path path1 = Paths.get("C:/Users/najma/Desktop/test.txt");
-        byteChanger(path1, "klok", "cock");
+        byteChanger(path1, "fishfish", "DziałaDziała");
     }
 }
