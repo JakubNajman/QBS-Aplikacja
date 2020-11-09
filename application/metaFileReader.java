@@ -7,8 +7,8 @@ import java.nio.file.*;
 public class metaFileReader {
 
     public static String getFileExtension(String fileName) {
-        String[] token = fileName.split(".");
-        return token[1];
+        String[] tokens = fileName.split("\\.(?=[^\\.]+$)");
+        return tokens[1];
     }
 
     public static void recDirectoryReader(Path path, String fileExtension, int index, List<Path> filePaths){
@@ -23,7 +23,10 @@ public class metaFileReader {
 
                 if(listOfFiles.get(index).isFile()){
                     String tempString = getFileExtension(listOfFiles.get(index).toString());
-                    if(tempString == fileExtension){
+                    System.out.println(tempString);
+                    System.out.println(fileExtension);
+                    System.out.println("Next file");
+                    if(tempString.equals(fileExtension)){
                         Path temp = Paths.get(listOfFiles.get(index).getCanonicalPath());
                         filePaths.add(temp);
                         System.out.println("File: " + listOfFiles.get(index).getName());
@@ -42,17 +45,9 @@ public class metaFileReader {
             
         }
     }
-    // && getFileExtension(listOfFiles.get(index).toString()).toString() == fileExtension
 
     public static void main(String[] args) {
         Path temp = Paths.get("C:/Users/najma/Desktop/Test/");
         List<Path> filePaths = new ArrayList<Path>();
-        // recDirectoryReader(temp, ".txt", 0, filePaths);
-        // System.out.println(filePaths.size());
-        // for(int i = 0; i<filePaths.size(); i++){
-        //     System.out.println(filePaths.get(i));
-        // }
-        String tempS = getFileExtension("test.txt");
-        System.out.println(tempS);
     }
 }
