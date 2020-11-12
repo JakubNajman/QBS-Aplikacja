@@ -85,7 +85,7 @@ public class metaBytes {
                 }
             }
         } catch (Exception e) {
-            System.out.println("uhoooh stinky");
+            System.out.println("null");
         }
     }
 
@@ -97,7 +97,7 @@ public class metaBytes {
                 }
             }
         } catch (Exception e) {
-            System.out.println("śmierdziuszek");
+            System.out.println("null");
         }
     }
 
