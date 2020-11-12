@@ -37,7 +37,7 @@ public class metaFileReader {
             }
             
         } catch (Exception e) {
-            
+            return;
         }
     }
 
