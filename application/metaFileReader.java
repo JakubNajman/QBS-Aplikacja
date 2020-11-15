@@ -6,11 +6,23 @@ import java.nio.file.*;
 
 public class metaFileReader {
 
+    
+    /** 
+     * @param fileName
+     * @return String
+     */
     public static String getFileExtension(String fileName) {
         String[] tokens = fileName.split("\\.(?=[^\\.]+$)");
         return tokens[1];
     }
 
+    
+    /** 
+     * @param path
+     * @param fileExtension
+     * @param index
+     * @param filePaths
+     */
     public static void recDirectoryReader(Path path, String fileExtension, int index, List<Path> filePaths){
         try {
             File mainDir = new File(path.toString());
@@ -37,12 +49,8 @@ public class metaFileReader {
             }
             
         } catch (Exception e) {
-            return;
+            System.out.println("Wyjątek:" + e);
         }
     }
 
-    public static void main(String[] args) {
-        Path temp = Paths.get("C:/Users/najma/Desktop/Test/");
-        List<Path> filePaths = new ArrayList<Path>();
-    }
 }
