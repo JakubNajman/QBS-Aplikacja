@@ -7,9 +7,9 @@ import java.nio.file.*;
 public class metaFileReader {
 
     
-    /** 
-     * @param fileName
-     * @return String
+    /** Funckja parsująca rozszerzenie z naszego pliku. 
+     * @param fileName nazwa pliku wraz z rozszerzeniem
+     * @return String sparsowane rozszerzenie pliku
      */
     public static String getFileExtension(String fileName) {
         String[] tokens = fileName.split("\\.(?=[^\\.]+$)");
@@ -17,7 +17,11 @@ public class metaFileReader {
     }
 
     
-    /** 
+    /** Funkcja rekurencyjna, która dodaje do array lista ścieżek @param filePaths ścieżkę do pliku jeżeli zgadza się podane rozszerzenie @param fileExtension z danej ścieżki @param path
+     * Funkcja ta najpier sprawdza, czy plik z danej ściezki istnieje lub jest katalogiem. Jeżeli tak to inicjuje array lista wszystkich podścieżek jakie są w tym katalogu. Poźniej sprawdza
+     * czy @param index jest równy wielkości array listy (jeżeli jest równy zero to wtedy nasz katalog jest już cały sprawdzony). Później jeżeli wartość nazej tabeli od @param index 
+     * może być albo plikiem albo katalogiem. Jeżeli jest plikiem to dodajemy ścieżkę do tego pliku do @param filePaths. Jeżeli jest to katalog to wchodzimy do tego katalogu i wywołujemy
+     * znowu naszą funkcję. Jeżeli nie trafimy na katalog to znowu wykonujemy naszą funkcję i inkrementujemy @param index.
      * @param path
      * @param fileExtension
      * @param index
